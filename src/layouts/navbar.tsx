@@ -3,6 +3,7 @@ import {
   IconBrandGithubFilled,
   IconBookFilled,
   IconMenuDeep,
+  IconMenu2,
 } from "@tabler/icons-react";
 
 const Navbar = () => {
@@ -12,13 +13,14 @@ const Navbar = () => {
     { name: "Examples", icon: <IconMenuDeep /> },
   ];
   return (
-    <nav className="flex items-center justify-between w-screen pt-3 pb-3 pl-6 pr-6 bg-transparent h-fit">
+    <nav className="flex items-center justify-between w-screen px-6 py-4 bg-transparent md:px-12 md:py-4 h-fit">
       <img src="/lapiscoLogo.svg" alt="lapisco logo" />
-      <div className="flex justify-between w-[400px] h-fit">
+      <div className="hidden md:justify-between md:w-[400px] md:h-fit md:flex">
         {navButtons.map((button) => (
           <NavButton icon={button.icon}>{button.name}</NavButton>
         ))}
       </div>
+      <IconMenu2 size={30} className="text-[#5F5B5C] md:hidden" />
     </nav>
   );
 };
