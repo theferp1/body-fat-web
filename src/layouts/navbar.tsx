@@ -1,3 +1,4 @@
+import { useState } from "react";
 import NavButton from "../components/NavButton";
 import {
   IconBrandGithubFilled,
@@ -7,21 +8,52 @@ import {
 } from "@tabler/icons-react";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navButtons = [
     { name: "Github", icon: <IconBrandGithubFilled /> },
     { name: "Documentation", icon: <IconBookFilled /> },
     { name: "Examples", icon: <IconMenuDeep /> },
   ];
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
   return (
-    <nav className="flex items-center justify-between w-screen px-6 py-4 bg-transparent md:px-12 md:py-4 h-fit">
-      <img src="/lapiscoLogo.svg" alt="lapisco logo" />
-      <div className="hidden md:justify-between md:w-[400px] md:h-fit md:flex">
-        {navButtons.map((button) => (
-          <NavButton icon={button.icon}>{button.name}</NavButton>
-        ))}
+    <>
+      <nav
+        className={`fixed flex z-50 items-center justify-between  transition-colors duration-75 ease-linear w-screen  h-fit px-6 py-4 md:px-12 md:py-4`}
+      >
+        <img
+          src="/lapiscoLogo.svg"
+          alt="lapisco logo"
+          className="h-11 md:h-12"
+        />
+        <div className="hidden md:justify-between md:w-[400px] md:flex md:h-fit">
+          {navButtons.map((button) => (
+            <NavButton icon={button.icon}>{button.name}</NavButton>
+          ))}
+        </div>
+        <IconMenu2
+          size={30}
+          onClick={toggleMenu}
+          className=" text-[#5F5B5C] md:hidden"
+        />
+      </nav>
+      <div
+        className={`absolute  z-30 flex flex-col items-center justify-center transition-all duration-300 w-full top-[76px]  ${
+          isMenuOpen ? " h-44  " : " h-0 "
+        }  `}
+      >
+        <div
+          className={` flex gap-4 flex-col  transition-all  duration-75 ${
+            isMenuOpen ? "  opacity-100  delay-100 " : " opacity-0   "
+          }    `}
+        >
+          {navButtons.map((button) => (
+            <NavButton icon={button.icon}>{button.name}</NavButton>
+          ))}
+        </div>
       </div>
-      <IconMenu2 size={30} className="text-[#5F5B5C] md:hidden" />
-    </nav>
+    </>
   );
 };
 
