@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed flex z-50 items-center justify-between  transition-colors duration-75 ease-linear w-screen  h-fit px-6 py-4 md:px-12 md:py-4`}
+        className={`fixed flex z-50 items-center justify-between  w-screen  h-fit px-6 py-4 md:px-12 md:py-4`}
       >
         <img
           src="/lapiscoLogo.svg"
@@ -40,11 +40,11 @@ const Navbar = () => {
       </nav>
       <div
         className={`absolute  z-30 flex flex-col items-center justify-center transition-all duration-300 w-full top-[76px]  ${
-          isMenuOpen ? " h-44  " : " h-0 "
+          isMenuOpen ? " h-48  " : " h-0 "
         }  `}
       >
         <div
-          className={` flex gap-4 flex-col  transition-all  duration-75 ${
+          className={` flex gap-6 flex-col  transition-all  duration-75 ${
             isMenuOpen ? "  opacity-100  delay-100 " : " opacity-0   "
           }    `}
         >
