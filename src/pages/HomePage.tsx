@@ -8,7 +8,7 @@ const HomePage = () => {
         Carefully developed and optimized, it offers a transformative experience
         within the scope of health and wellness.
       </span>
-      <button className="px-4 py-[6px] shadow-md bg-[#EFEFEF] font-bold rounded-md appearance-none hover:scale-110 transition-transform duration-100 ease-in">
+      <button className="px-6 py-[8px] text-lg shadow-md bg-[#EFEFEF] font-bold rounded-md appearance-none hover:scale-110 transition-transform duration-100 ease-in">
         Get Started
       </button>
     </div>
