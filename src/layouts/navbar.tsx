@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed flex z-50 items-center justify-between  w-screen  h-fit px-6 py-4 md:px-12 md:py-4`}
+        className={`fixed flex z-50 items-center justify-between  w-screen  h-fit px-6 py-4 sm:px-10 md:px-12 md:py-4`}
       >
         <img
           src="/lapiscoLogo.svg"
