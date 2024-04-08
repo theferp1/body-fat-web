@@ -6,9 +6,11 @@ import {
   IconMenuDeep,
   IconMenu2,
 } from "@tabler/icons-react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const navButtons = [
     { name: "Github", icon: <IconBrandGithubFilled /> },
     { name: "Documentation", icon: <IconBookFilled /> },
@@ -16,6 +18,10 @@ const Navbar = () => {
   ];
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogoClick = () => {
+    navigate("/");
   };
   return (
     <>
@@ -26,6 +32,7 @@ const Navbar = () => {
           src="/lapiscoLogo.svg"
           alt="lapisco logo"
           className="h-11 md:h-12"
+          onClick={handleLogoClick}
         />
         <div className="hidden md:justify-between md:w-[400px] md:flex md:h-fit">
           {navButtons.map((button) => (

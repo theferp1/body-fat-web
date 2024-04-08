@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className=" w-full h-screen bg-[#E7E3E4]">
-      <Navbar />
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/getstarted" element={<GetStarted />} />
