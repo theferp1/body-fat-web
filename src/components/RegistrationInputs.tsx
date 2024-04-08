@@ -43,7 +43,7 @@ const RegistrationInput = ({
           id={label}
           type={type}
           placeholder={placeholder}
-          className="text-sm overflow-hidden text-ellipsis whitespace-nowrap placeholder-transparent px-1 focus:placeholder-[#9CA3AF] bg-transparent appearance-none focus:outline-none "
+          className="text-sm overflow-hidden w-full text-ellipsis whitespace-nowrap placeholder-transparent px-1 focus:placeholder-[#9CA3AF] bg-transparent appearance-none focus:outline-none "
         />
         {postfix != undefined ? (
           <span
