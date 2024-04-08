@@ -28,11 +28,11 @@ const RegistrationInput = ({
     <div
       onFocus={handleFocus}
       onBlur={handleBlur}
-      className="flex flex-col gap-1 px-1 pb-1 h-fit border-b-2 border-[#FC7825]"
+      className="flex flex-col gap-1 px-1 h-fit border-b-2 border-[#FC7825] "
     >
       <label
         htmlFor={label}
-        className={`font-medium transition-transform duration-150 ease-linear ${
+        className={`font-medium transition-transform duration-150 ease-linear w-fit ${
           isFocused ? "translate-y-0" : "translate-y-5"
         } `}
       >
@@ -43,7 +43,7 @@ const RegistrationInput = ({
           id={label}
           type={type}
           placeholder={placeholder}
-          className="text-sm overflow-hidden w-full text-ellipsis whitespace-nowrap placeholder-transparent px-1 focus:placeholder-[#9CA3AF] bg-transparent appearance-none focus:outline-none "
+          className="text-sm overflow-hidden w-full text-ellipsis whitespace-nowrap placeholder-transparent  px-1  focus:placeholder-[#9CA3AF] bg-transparent selection:p appearance-none focus:outline-none "
         />
         {postfix != undefined ? (
           <span

@@ -31,7 +31,7 @@ const Navbar = () => {
         <img
           src="/lapiscoLogo.svg"
           alt="lapisco logo"
-          className="h-11 md:h-12"
+          className="cursor-pointer h-11 md:h-12"
           onClick={handleLogoClick}
         />
         <div className="hidden md:justify-between md:w-[400px] md:flex md:h-fit">
