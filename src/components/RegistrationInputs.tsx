@@ -4,12 +4,14 @@ interface RegistrationInputsProps {
   type: React.HTMLInputTypeAttribute | undefined;
   placeholder: string;
   label: string;
+  postfix?: string | undefined;
 }
 
 const RegistrationInput = ({
   type,
   placeholder,
   label,
+  postfix,
 }: RegistrationInputsProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -36,12 +38,25 @@ const RegistrationInput = ({
       >
         {label}
       </label>
-      <input
-        id={label}
-        type={type}
-        placeholder={placeholder}
-        className="text-sm placeholder-transparent focus:placeholder-[#9CA3AF] bg-transparent appearance-none focus:outline-none "
-      />
+      <div className="flex">
+        <input
+          id={label}
+          type={type}
+          placeholder={placeholder}
+          className="text-sm overflow-hidden text-ellipsis whitespace-nowrap placeholder-transparent px-1 focus:placeholder-[#9CA3AF] bg-transparent appearance-none focus:outline-none "
+        />
+        {postfix != undefined ? (
+          <span
+            className={`px-1 text-sm ${
+              isFocused ? "text-black" : "text-transparent"
+            }`}
+          >
+            {postfix}
+          </span>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 };

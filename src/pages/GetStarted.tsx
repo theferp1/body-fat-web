@@ -5,31 +5,37 @@ const GetStarted = () => {
       label: "Name",
       placeholder: "Enter your name",
       type: "text",
+      postfix: undefined,
     },
     {
       label: "Email",
       placeholder: "Enter your email",
       type: "email",
+      postfix: undefined,
     },
     {
       label: "Number",
       placeholder: "Enter your number",
       type: "text",
+      postfix: undefined,
     },
     {
       label: "Age",
       placeholder: "Enter your age",
       type: "number",
+      postfix: undefined,
     },
     {
       label: "Weight",
       placeholder: "Enter your weight",
       type: "number",
+      postfix: "kg",
     },
     {
       label: "Height",
       placeholder: "Enter your height",
       type: "number",
+      postfix: "cm",
     },
   ];
   return (
@@ -37,13 +43,17 @@ const GetStarted = () => {
       <span className="font-bold text-2xl sm:text-3xl text-[#434343] drop-shadow-md">
         Registration
       </span>
-      <form action="" className="flex flex-col gap-3">
+      <form
+        action=""
+        className="flex flex-col gap-3 sm:grid sm:grid-cols-2 sm:gap-8 md:w-[50%] "
+      >
         {inputs.map((input) => (
           <RegistrationInput
             key={input.label}
             label={input.label}
             placeholder={input.placeholder}
             type={input.type}
+            postfix={input.postfix}
           />
         ))}
       </form>
