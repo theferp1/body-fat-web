@@ -5,6 +5,7 @@ import {
   IconBookFilled,
   IconMenuDeep,
   IconMenu2,
+  IconX,
 } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 
@@ -26,28 +27,52 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed flex z-50 items-center justify-between  w-screen  h-fit px-6 py-4 sm:px-10 md:px-12 md:py-4`}
+        className={`fixed flex z-50 items-center justify-between transition-all   w-screen ${
+          isMenuOpen
+            ? "bg-black duration-[250ms]"
+            : "bg-transparent duration-[350ms]"
+        }  h-fit px-6 py-4 sm:px-10 md:px-12 md:py-4`}
       >
-        <img
-          src="/lapiscoLogo.svg"
-          alt="lapisco logo"
-          className="cursor-pointer h-11 md:h-12"
-          onClick={handleLogoClick}
-        />
+        {isMenuOpen ? (
+          <img
+            src="/lapiscoLogoWhite.svg"
+            alt="lapisco logo"
+            className={`cursor-pointer h-11 md:h-12 `}
+            onClick={handleLogoClick}
+          />
+        ) : (
+          <img
+            src="/lapiscoLogo.svg"
+            alt="lapisco logo"
+            className={`cursor-pointer h-11 md:h-12 `}
+            onClick={handleLogoClick}
+          />
+        )}
+
         <div className="hidden md:justify-between md:w-[400px] md:flex md:h-fit">
           {navButtons.map((button) => (
-            <NavButton icon={button.icon}>{button.name}</NavButton>
+            <NavButton icon={button.icon} isMenuOpen={isMenuOpen}>
+              {button.name}
+            </NavButton>
           ))}
         </div>
-        <IconMenu2
-          size={30}
-          onClick={toggleMenu}
-          className=" text-[#5F5B5C] md:hidden"
-        />
+        {isMenuOpen ? (
+          <IconX
+            size={30}
+            onClick={toggleMenu}
+            className={`text-white md:hidden`}
+          />
+        ) : (
+          <IconMenu2
+            size={30}
+            onClick={toggleMenu}
+            className={`text-[#5F5B5C]  md:hidden `}
+          />
+        )}
       </nav>
       <div
         className={`absolute  z-30 flex flex-col items-center justify-center transition-all duration-300 w-full top-[76px]  ${
-          isMenuOpen ? " h-48  " : " h-0 "
+          isMenuOpen ? " h-48 bg-black  " : " h-0 bg-transparent "
         }  `}
       >
         <div
@@ -56,7 +81,9 @@ const Navbar = () => {
           }    `}
         >
           {navButtons.map((button) => (
-            <NavButton icon={button.icon}>{button.name}</NavButton>
+            <NavButton icon={button.icon} isMenuOpen={isMenuOpen}>
+              {button.name}
+            </NavButton>
           ))}
         </div>
       </div>
