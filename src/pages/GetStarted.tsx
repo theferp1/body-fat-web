@@ -38,14 +38,8 @@ const GetStarted = () => {
       postfix: "cm",
     },
     {
-      label: "Front Image",
-      placeholder: "Upload your front image",
-      type: "file",
-      postfix: undefined,
-    },
-    {
-      label: "Back Image",
-      placeholder: "Upload your back image",
+      label: "Your Photo",
+      placeholder: "Upload your photo",
       type: "file",
       postfix: undefined,
     },
