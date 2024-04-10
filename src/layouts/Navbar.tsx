@@ -29,7 +29,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      setIsScrolled(scrollTop > 10); // Verifica se a página foi rolada para baixo
+      setIsScrolled(scrollTop > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -43,10 +43,10 @@ const Navbar = () => {
     <>
       <nav
         className={`fixed flex z-50 items-center justify-between transition-all ${
-          isScrolled ? "bg-white bg-opacity-20 backdrop-blur-md " : ""
+          isScrolled ? "bg-[#dad6d7] " : ""
         }   w-screen ${
           isMenuOpen
-            ? "bg-white bg-opacity-20  duration-[250ms]"
+            ? "bg-[#dad6d7] duration-[250ms]"
             : "bg-transparent duration-[350ms]"
         }  h-fit px-6 py-4 sm:px-10 md:px-12 md:py-4`}
       >
@@ -78,9 +78,7 @@ const Navbar = () => {
       </nav>
       <div
         className={`fixed  z-30 flex flex-col left-0 items-center justify-center transition-all duration-300 w-screen top-[76px]  ${
-          isMenuOpen
-            ? " h-48 bg-white bg-opacity-20 backdrop-blur-md "
-            : " h-0 bg-transparent "
+          isMenuOpen ? " h-48 bg-[#dad6d7]" : " h-0 bg-transparent "
         }  `}
       >
         <div
