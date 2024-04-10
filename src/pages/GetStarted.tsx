@@ -64,7 +64,10 @@ const GetStarted = () => {
         ))}
 
         <div className="flex items-center justify-center w-full h-10 sm:col-span-2 ">
-          <button className="px-4 py-1 bg-[#5F5B5C] text-white  font-semibold rounded-lg w-fit h-fit">
+          <button
+            className="px-4 py-1 bg-[#5F5B5C] text-white  font-semibold rounded-lg w-fit h-fit hover:scale-110 duration-100 ease-in
+          "
+          >
             Finish
           </button>
         </div>
