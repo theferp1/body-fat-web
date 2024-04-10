@@ -57,7 +57,9 @@ const Navbar = () => {
 
         <div className="hidden md:justify-between md:w-[400px] md:flex md:h-fit">
           {navButtons.map((button) => (
-            <NavButton icon={button.icon}>{button.name}</NavButton>
+            <NavButton key={button.name} icon={button.icon}>
+              {button.name}
+            </NavButton>
           ))}
         </div>
         {isMenuOpen ? (
