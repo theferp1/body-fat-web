@@ -87,7 +87,9 @@ const Navbar = () => {
           }    `}
         >
           {navButtons.map((button) => (
-            <NavButton icon={button.icon}>{button.name}</NavButton>
+            <NavButton key={button.name} icon={button.icon}>
+              {button.name}
+            </NavButton>
           ))}
         </div>
       </div>
