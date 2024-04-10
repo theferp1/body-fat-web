@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavButton from "../components/NavButton";
 import {
   IconBrandGithubFilled,
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const navButtons = [
     { name: "Github", icon: <IconBrandGithubFilled /> },
@@ -24,43 +25,48 @@ const Navbar = () => {
   const handleLogoClick = () => {
     navigate("/");
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 10); // Verifica se a página foi rolada para baixo
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <nav
-        className={`fixed flex z-50 items-center justify-between transition-all   w-screen ${
+        className={`fixed flex z-50 items-center justify-between transition-all ${
+          isScrolled ? "bg-white bg-opacity-20 backdrop-blur-md " : ""
+        }   w-screen ${
           isMenuOpen
-            ? "bg-black duration-[250ms]"
+            ? "bg-white bg-opacity-20  duration-[250ms]"
             : "bg-transparent duration-[350ms]"
         }  h-fit px-6 py-4 sm:px-10 md:px-12 md:py-4`}
       >
-        {isMenuOpen ? (
-          <img
-            src="/lapiscoLogoWhite.svg"
-            alt="lapisco logo"
-            className={`cursor-pointer h-11 md:h-12 `}
-            onClick={handleLogoClick}
-          />
-        ) : (
-          <img
-            src="/lapiscoLogo.svg"
-            alt="lapisco logo"
-            className={`cursor-pointer h-11 md:h-12 `}
-            onClick={handleLogoClick}
-          />
-        )}
+        <img
+          src="/lapiscoLogo.svg"
+          alt="lapisco logo"
+          className={`cursor-pointer h-11 md:h-12 `}
+          onClick={handleLogoClick}
+        />
 
         <div className="hidden md:justify-between md:w-[400px] md:flex md:h-fit">
           {navButtons.map((button) => (
-            <NavButton icon={button.icon} isMenuOpen={isMenuOpen}>
-              {button.name}
-            </NavButton>
+            <NavButton icon={button.icon}>{button.name}</NavButton>
           ))}
         </div>
         {isMenuOpen ? (
           <IconX
             size={30}
             onClick={toggleMenu}
-            className={`text-white md:hidden`}
+            className={`text-[#5F5B5C] md:hidden`}
           />
         ) : (
           <IconMenu2
@@ -71,8 +77,10 @@ const Navbar = () => {
         )}
       </nav>
       <div
-        className={`absolute  z-30 flex flex-col items-center justify-center transition-all duration-300 w-full top-[76px]  ${
-          isMenuOpen ? " h-48 bg-black  " : " h-0 bg-transparent "
+        className={`fixed  z-30 flex flex-col left-0 items-center justify-center transition-all duration-300 w-screen top-[76px]  ${
+          isMenuOpen
+            ? " h-48 bg-white bg-opacity-20 backdrop-blur-md "
+            : " h-0 bg-transparent "
         }  `}
       >
         <div
@@ -81,9 +89,7 @@ const Navbar = () => {
           }    `}
         >
           {navButtons.map((button) => (
-            <NavButton icon={button.icon} isMenuOpen={isMenuOpen}>
-              {button.name}
-            </NavButton>
+            <NavButton icon={button.icon}>{button.name}</NavButton>
           ))}
         </div>
       </div>
