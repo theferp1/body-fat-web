@@ -51,7 +51,7 @@ const DragInput = () => {
   };
   return (
     <div
-      className={`w-[500px] rounded-xl h-[300px] border-2 border-black flex flex-col gap-3 justify-center items-center ${
+      className={`w-full h-[250px] sm:w-[250px] rounded-xl sm:h-[250px] lg:w-[300px] lg:h-[300px] border-2 border-black flex flex-col gap-3 justify-center items-center ${
         dragOver ? "bg-gray-200" : ""
       }`}
       onDragEnter={handleDragEnter}
@@ -60,7 +60,9 @@ const DragInput = () => {
       onDrop={handleDrop}
     >
       <IconFileUpload size={60} stroke={1.2} />
-      <span className="font-medium">Drag & drop your photo here or</span>
+      <span className="font-medium sm:text-sm">
+        Drag & drop your photo here or
+      </span>
       <input
         className="file:rounded-md file:hover:bg-[#575455] duration-75 ease-linear hover:scale-110 file:bg-[#5F5B5C] file:cursor-pointer file:px-2 file:py-1 file:text-white file:font-semibold file:border-0 text-transparent  w-[100px]"
         type="file"

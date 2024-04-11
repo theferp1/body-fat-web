@@ -14,8 +14,8 @@ const PhotoChoose = () => {
     }
   };
   return (
-    <div className="flex flex-col items-center justify-center gap-11">
-      <div className="flex items-center justify-center w-full gap-36">
+    <div className="flex flex-col items-center justify-center gap-8 pb-10 sm:h-full lg:gap-6 lg:pb-5 sm:gap-11">
+      <div className="flex flex-col items-center justify-center w-full gap-10 sm:flex-row sm:gap-6 lg:gap-10 md:justify-center md:gap-10s">
         <DragInput />
         <PreviewImage />
       </div>
