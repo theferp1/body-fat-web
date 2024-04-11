@@ -1,5 +1,5 @@
 import Navbar from "./layouts/Navbar";
-import HomePage from "./pages/HomePage";
+import Home from "./pages/Home";
 import GetStarted from "./pages/GetStarted";
 import GetStartedTest from "./pages/GetStartedTest";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -7,12 +7,12 @@ import { MainProvider } from "./contexts/MainContext";
 
 function App() {
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full ">
       <Router>
-        <Navbar />
         <MainProvider>
+          <Navbar />
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<Home />} />
 
             <Route path="/getstarted" element={<GetStartedTest />} />
           </Routes>

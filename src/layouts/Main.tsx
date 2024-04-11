@@ -1,14 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-const HomePage = () => {
+const Main = () => {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
     navigate("/getstarted");
   };
-
   return (
-    <div className="z-10 flex flex-col gap-5 w-screen justify-center sm:justify-end pb-16 items-start h-screen px-6 sm:px-10 md:px-12 pt-[80px]">
+    <div className="z-10 flex flex-col gap-5 w-full justify-center sm:justify-end pb-16 items-start h-screen px-6 sm:px-10 md:px-12 pt-[80px]">
       <span className="font-bold text-3xl sm:text-4xl md:text-5xl text-[#434343] w-full sm:w-[500px] md:w-[600px] drop-shadow-lg">
         Body composition analysis through photographs.
       </span>
@@ -26,4 +25,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Main;

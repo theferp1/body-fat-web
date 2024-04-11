@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useRef,
+} from "react";
 
 // Definição do tipo para o arquivo
 export interface MainContextType {
@@ -8,6 +14,10 @@ export interface MainContextType {
   setAnalyze: (analyze: boolean) => void;
   previewSrc: string | undefined;
   setPreviewSrc: (previewURL: string | undefined) => void;
+  mainRef: React.RefObject<HTMLDivElement>;
+  documentationRef: React.RefObject<HTMLDivElement>;
+  scrollToMain: () => void;
+  scrollToDocumentation: () => void;
 }
 
 // Criação do contexto
@@ -20,10 +30,35 @@ export const MainProvider: React.FC<{ children: ReactNode }> = ({
   const [file, setFile] = useState<File | null>(null);
   const [analyze, setAnalyze] = useState<boolean>(false);
   const [previewSrc, setPreviewSrc] = useState<string | undefined>(undefined);
+  const mainRef = useRef<HTMLDivElement>(null);
+  const documentationRef = useRef<HTMLDivElement>(null);
+
+  function scrollToMain() {
+    if (mainRef.current) {
+      mainRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
+  const scrollToDocumentation = () => {
+    if (documentationRef.current) {
+      documentationRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <MainContext.Provider
-      value={{ file, setFile, analyze, setAnalyze, previewSrc, setPreviewSrc }}
+      value={{
+        file,
+        setFile,
+        analyze,
+        setAnalyze,
+        previewSrc,
+        setPreviewSrc,
+        mainRef,
+        documentationRef,
+        scrollToDocumentation,
+        scrollToMain,
+      }}
     >
       {children}
     </MainContext.Provider>

@@ -7,23 +7,42 @@ import {
   IconMenu2,
   IconX,
 } from "@tabler/icons-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useMainContext } from "../contexts/MainContext";
+
+export interface NavButtonData {
+  name: string;
+  icon: JSX.Element;
+}
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
-  const navButtons = [
+  const location = useLocation();
+  const { scrollToMain, scrollToDocumentation } = useMainContext();
+  const navButtons: NavButtonData[] = [
     { name: "Github", icon: <IconBrandGithubFilled /> },
     { name: "Documentation", icon: <IconBookFilled /> },
     { name: "Examples", icon: <IconMenuDeep /> },
   ];
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const handleLogoClick = () => {
-    navigate("/");
+    if (location.pathname === "/") {
+      scrollToMain();
+    } else {
+      navigate("/");
+    }
+  };
+
+  const handleSelectFunction = (button: NavButtonData) => {
+    if (button.name === "Documentation") {
+      scrollToDocumentation();
+    }
   };
 
   useEffect(() => {
@@ -57,7 +76,11 @@ const Navbar = () => {
 
         <div className="hidden md:justify-between md:w-[400px] md:flex md:h-fit">
           {navButtons.map((button) => (
-            <NavButton key={button.name} icon={button.icon}>
+            <NavButton
+              onClick={() => handleSelectFunction(button)}
+              key={button.name}
+              icon={button.icon}
+            >
               {button.name}
             </NavButton>
           ))}
@@ -87,7 +110,11 @@ const Navbar = () => {
           }    `}
         >
           {navButtons.map((button) => (
-            <NavButton key={button.name} icon={button.icon}>
+            <NavButton
+              onClick={() => handleSelectFunction(button)}
+              key={button.name}
+              icon={button.icon}
+            >
               {button.name}
             </NavButton>
           ))}
