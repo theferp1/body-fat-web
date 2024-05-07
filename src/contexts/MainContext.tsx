@@ -18,6 +18,8 @@ export interface MainContextType {
   documentationRef: React.RefObject<HTMLDivElement>;
   scrollToMain: () => void;
   scrollToDocumentation: () => void;
+  error: boolean;
+  setError: (error: boolean) => void;
 }
 
 // Criação do contexto
@@ -29,6 +31,7 @@ export const MainProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [file, setFile] = useState<File | null>(null);
   const [analyze, setAnalyze] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const [previewSrc, setPreviewSrc] = useState<string | undefined>(undefined);
   const mainRef = useRef<HTMLDivElement>(null);
   const documentationRef = useRef<HTMLDivElement>(null);
@@ -58,6 +61,8 @@ export const MainProvider: React.FC<{ children: ReactNode }> = ({
         documentationRef,
         scrollToDocumentation,
         scrollToMain,
+        error,
+        setError,
       }}
     >
       {children}

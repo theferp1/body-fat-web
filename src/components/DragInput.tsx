@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { IconFileUpload } from "@tabler/icons-react";
 import { useMainContext } from "../contexts/MainContext";
+import axios from "axios";
 
 const DragInput = () => {
   const [dragOver, setDragOver] = useState(false);
   //const [previewSrc, setPreviewSrc] = useState<string | undefined>(undefined);
-  const { setFile, setPreviewSrc } = useMainContext();
+  const [errorMessage, setErrorMessage] = useState("");
+  const { setFile, setPreviewSrc, setError } = useMainContext();
 
   const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -44,11 +46,13 @@ const DragInput = () => {
         const dataURL = reader.result as string;
         setPreviewSrc(dataURL);
       };
-      // Aqui você pode fazer o que quiser com o arquivo, como enviar para o servidor, processar localmente, etc.
+      setError(false);
     } else {
-      console.log("File is not an image.");
+      setError(true);
+      setErrorMessage("File is not an image");
     }
   };
+
   return (
     <div
       className={`w-full h-[250px] sm:w-[250px] rounded-xl sm:h-[250px] lg:w-[300px] lg:h-[300px] border-2 border-black flex flex-col gap-3 justify-center items-center ${
@@ -69,6 +73,7 @@ const DragInput = () => {
         accept="image/*"
         onChange={handleFileChange}
       />
+      <span className="">{errorMessage}</span>
     </div>
   );
 };
